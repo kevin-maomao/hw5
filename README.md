@@ -1,7 +1,7 @@
 # hw5
 # PwmOut and logic analyzer
 
-##copy from github https://github.com/ARMmbed/mbed-os-snippet-PwmOut_ex_3
+copy from github https://github.com/ARMmbed/mbed-os-snippet-PwmOut_ex_3
 
 Demonstrate debugging PWM using logic analyzer
 
