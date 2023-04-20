@@ -1,4 +1,5 @@
-# PwmOut example
+# hw5
+# PwmOut and logic analyzer
 
 This example shows how to use PwmOut to modulate LED blinking.
 
