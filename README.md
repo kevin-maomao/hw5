@@ -1,4 +1,4 @@
-# hw5
+# Hw5
 # PwmOut and logic analyzer
 
 copy from github https://github.com/ARMmbed/mbed-os-snippet-PwmOut_ex_3
