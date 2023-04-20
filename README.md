@@ -3,8 +3,7 @@
 
 copy from github https://github.com/ARMmbed/mbed-os-snippet-PwmOut_ex_3
 
-modify main.cpp
-## Codes added
+## Codes modified in main.cpp
 
 ```python
 PwmOut led(PWM_OUT);
