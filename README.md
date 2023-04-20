@@ -4,7 +4,21 @@
 copy from github https://github.com/ARMmbed/mbed-os-snippet-PwmOut_ex_3
 
 modify main.cpp
+## Codes added
 
+```python
+PwmOut led(PWM_OUT);
+
+int main()
+{
+    // specify period first
+    led.period(0.05f);      // 0.05 second period
+    led.write(0.50f);      // 50% duty cycle, relative to period
+    //led = 0.5f;          // shorthand for led.write()
+    //led.pulsewidth(2);   // alternative to led.write, set duty cycle time in seconds
+    while (1);
+}
+```
 
 Observing PWM using logic analyzer
 
