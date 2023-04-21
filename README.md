@@ -2,19 +2,58 @@
 # PwmOut and logic analyzer
 
 copy from github https://github.com/ARMmbed/mbed-os-snippet-PwmOut_ex_3
+and modify the code referencing breathing light
+createe an object breathingLight and use eventqueue to simutaneously observe the PWM
 
 ## Codes modified in main.cpp
 
 ```python
-PwmOut led(PWM_OUT);
+class breathingLight {
+public:
+    breathingLight(PwmOut &pwm, events::EventQueue &event_queue, float duty = 0): pwm(pwm), _event_queue(event_queue), duty(duty){
+        printf("Init\n");
+    }
+    void start(){
+        pwm.period(0.005f);
+        pwm.write(duty);
+        _event_queue.call(
+            [this] {
+                updateLight();
+            }
+        );
+        _event_queue.dispatch_forever();
+    }
+private:
+    void updateLight(){
+        while (1) {
+            // printf("Update: %f\n", duty);
+            if(duty>=1){
+                isReverse = true;
+            }
+            if(duty<0){
+                isReverse = false;
+            }
+            isReverse?(duty-=0.05):(duty+=0.05);
+            pwm.write(duty);
+            wait_us(10000);
+        }
+    }
+    PwmOut &pwm;
+    float duty;
+    bool isReverse = false;
+    events::EventQueue &_event_queue;
+};
+```
 
+```python
 int main()
 {
-    // specify period first
-    led.period(0.05f);      // 0.05 second period
-    led.write(0.50f);      // 50% duty cycle, relative to period
-    //led = 0.5f;          // shorthand for led.write()
-    //led.pulsewidth(2);   // alternative to led.write, set duty cycle time in seconds
+    breathingLight breathLed = breathingLight(led, event_queue);
+    breathingLight breathBoardLed = breathingLight(ledboard, event_queue);
+    
+    breathLed.start();
+    breathBoardLed.start();
+    
     while (1);
 }
 ```
