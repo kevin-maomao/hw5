@@ -71,6 +71,7 @@ int main()
 ```
 
 # 2.Observing PWM using logic analyzer
+![image](https://user-images.githubusercontent.com/59012686/233574008-32c420e4-ec35-411b-b43f-af8084dc906a.png)
 
 # 3.Generate complementary PWM with dead time insertion in STM32 platform
 
