@@ -4,7 +4,8 @@
 copy from github https://github.com/ARMmbed/mbed-os-snippet-PwmOut_ex_3
 
 modify the code referencing breathing light
-createe an object breathingLight and use eventqueue to simutaneously observe the PWM
+
+create an object "breathingLight" and use eventqueue to simutaneously observe the PWM
 
 ## Codes modified in main.cpp
 
